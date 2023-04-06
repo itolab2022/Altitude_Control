@@ -14,7 +14,7 @@ vo = 0
 yn_list = []
 yo = 10
 #時間
-t = 10
+t = 100
 #刻み幅
 h = 0.001
 #要素数
@@ -22,7 +22,6 @@ n = int((t/h))
 #制御入力
 omega_o = np.sqrt(m * g / Ct)
 omega = 480
-delta_omega = np.sqrt(omega**2 - omega_o**2)
 # delta_T = Ct *(omega**2 - omega_o**2)
 delta_T = 0
 #システムノイズのばらつき（分散）
@@ -44,8 +43,6 @@ for i in range(n) :
     noise = np.matrix([[rand[0,0]],[0]])
     y = (mat_1 * y)  + (mat_3*delta_T) + noise
     yn_list.append(y[1,0])
-    
-    
     vn_list.append(y[0,0])
 # plt.plot(T,yn_list,label = "final")
 # plt.grid()
